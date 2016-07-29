@@ -1,26 +1,32 @@
 //
-//  RecentTableViewController.swift
+//  SearchViewController.swift
 //  S.O.S
 //
-//  Created by JHJG on 2016. 7. 28..
+//  Created by JHJG on 2016. 7. 29..
 //  Copyright © 2016년 KangJungu. All rights reserved.
 //
 
 import UIKit
 
-class RecentTableViewController: UITableViewController,UIPopoverPresentationControllerDelegate {
+class SearchViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
+    
+    @IBOutlet var searchText: UISearchBar!
+    @IBOutlet var tableView: UITableView!
+    let cellID = SupportSingleton.sharedInstance.SEARCH_CELL_ID
     
     var popupController:UIAlertController?
     var okAction:UIAlertAction?
     var cancelAction:UIAlertAction?
     
-    var menuKey:Int?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //네비게이션 초기화
         naviInit()
         
+        //search bar에서 search 버튼을 누른경우를 처리하려면 델리게이트를 추가해준다.
+        searchText.delegate = self
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         //테이블 뷰의 예상 행 높이를 설정한다.(성능향상 및 내비게이션이 추가될때 행 높이와 충돌하지 않도록 함)
         tableView.estimatedRowHeight = 60
     }
@@ -31,19 +37,19 @@ class RecentTableViewController: UITableViewController,UIPopoverPresentationCont
     
     
     //섹션갯수
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     //섹션 별 테이블 아이템 갯수
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //재활용할 셀이 큐에 있으면 dequeue하고 없으면 셀을 만든다.
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(SupportSingleton.sharedInstance.RECENT_CELL_ID, forIndexPath: indexPath) as! RecentTableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! RecentTableViewCell
         let row = indexPath.row
         
         //텍스트 테스트
@@ -53,11 +59,10 @@ class RecentTableViewController: UITableViewController,UIPopoverPresentationCont
         return cell
     }
     
-    
     //셀 슬라이드를 하기위해 필요
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        //유니코드로 u{2606} = 별모양 
+        //유니코드로 u{2606} = 별모양
         //별 색깔 변하게 하기 : u{2605}
         let save = UITableViewRowAction(style: .Normal, title: "\u{2606}\n저장") { action, index in
             print("save button tapped")
@@ -67,27 +72,35 @@ class RecentTableViewController: UITableViewController,UIPopoverPresentationCont
         return [save]
     }
     
+    //셀 높이 선언
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
     //셀 슬라이드를 하기위해 필요
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // the cells you would like the actions to appear needs to be editable
         return true
+    }
+
+    //스크롤 시작시 키보드 숨기기
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        searchText.endEditing(true)
+    }
+    
+    //search 버튼 클릭시 이 메소드 호출됨.
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        //검색 구현
+        print("searchBarSearchButtonClicked")
+        //키보드 숨김
+        searchText.endEditing(true)
     }
     
     //세그웨이가 실행되기 전에 호출됨.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        //팝오버 관련해서 필요함
-        //메뉴버튼 눌렀을때
-        if segue.identifier == SupportSingleton.sharedInstance.MENU_SEGUE_ID{
-            let popoverViewController = segue.destinationViewController as! MenuViewController
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            //현재 뷰컨트롤러 객체를 넣어준다.
-            popoverViewController.recentViewController = self
-            popoverViewController.popoverPresentationController!.delegate = self
-        }
-        
         //디테일 뷰로 이동
-        if segue.identifier == SupportSingleton.sharedInstance.DETAIL_SEGUE_ID{
+        if segue.identifier == SupportSingleton.sharedInstance.SEARCH_DETAIL_SEGUE_ID{
             //목적지 ViewController를 선언해주고
             let detailViewController = segue.destinationViewController as! DetailViewController
             
@@ -97,25 +110,16 @@ class RecentTableViewController: UITableViewController,UIPopoverPresentationCont
             
             print("row \(row)")
             //목적지 viewController에서 website 변수를 채운다.
-//            detailViewController.webSite = webAddresses[row]
+            //            detailViewController.webSite = webAddresses[row]
             
         }
     }
     
-    //팝오버해서 관련 필요함
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-    }
     
     //네비게이션 초기화
     func naviInit(){
-        //네비게이션 전체 색 변경
-        self.navigationController?.navigationBar.barTintColor = UIColor.mainColor()
-        //백 버튼쪽 색 변경
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         //네비게이션 title과 색 변경
-        self.title = "최근 장학금"
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.title = "키워드 검색"
     }
     
     func startConfirmPopup(title:String,message:String){
@@ -157,25 +161,5 @@ class RecentTableViewController: UITableViewController,UIPopoverPresentationCont
             animated: true,
             completion: nil)
     }
-    
-    //메뉴를 클릭한 경우 실행
-    func menuClick(){
-        var viewController:UIViewController?
-        if menuKey == SupportSingleton.sharedInstance.MENU_SEARCH_KEY {
-            //뷰 컨트롤러 Identifier로 스토리보드 내용 가져와서 뷰컨트롤러를 채운다
-            viewController = self.storyboard!.instantiateViewControllerWithIdentifier(SupportSingleton.sharedInstance.SEARCHSTORYBOARD_ID) as! SearchViewController
-        } else if menuKey == SupportSingleton.sharedInstance.MENU_SCHOOLSEARCH_KEY {
-            viewController = self.storyboard!.instantiateViewControllerWithIdentifier(SupportSingleton.sharedInstance.SCHOOLSEARCHSTORYBOARD_ID) as! SchoolSearchViewController
-        } else if menuKey == SupportSingleton.sharedInstance.MENU_STORAGE_KEY {
-            viewController = self.storyboard!.instantiateViewControllerWithIdentifier(SupportSingleton.sharedInstance.STORAGESTORYBOARD_ID) as! StorageViewController
-        } else if menuKey == SupportSingleton.sharedInstance.MENU_SETTING_KEY {
-            viewController = self.storyboard!.instantiateViewControllerWithIdentifier(SupportSingleton.sharedInstance.STETTINGSTORYBOARD_ID) as! SettingViewController
-        } else {
-            return
-        }
-        //뷰를 바꾼다.
-        self.navigationController!.pushViewController(viewController!, animated: true)
-    }
-    
     
 }

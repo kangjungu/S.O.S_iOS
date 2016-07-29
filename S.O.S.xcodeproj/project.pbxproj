@@ -21,6 +21,10 @@
 		812D7EEE1D49C27600DBC8F6 /* SupportSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D7EED1D49C27600DBC8F6 /* SupportSingleton.swift */; };
 		813D5CAB1D4B5CED00AD3C85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CAA1D4B5CED00AD3C85 /* MenuViewController.swift */; };
 		813D5CAF1D4B6AD700AD3C85 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CAE1D4B6AD700AD3C85 /* DetailViewController.swift */; };
+		813D5CB11D4B825900AD3C85 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CB01D4B825900AD3C85 /* SearchViewController.swift */; };
+		813D5CB31D4B876300AD3C85 /* SchoolSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CB21D4B876300AD3C85 /* SchoolSearchViewController.swift */; };
+		813D5CB51D4B877600AD3C85 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CB41D4B877600AD3C85 /* StorageViewController.swift */; };
+		813D5CB71D4B878000AD3C85 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CB61D4B878000AD3C85 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		812D7EED1D49C27600DBC8F6 /* SupportSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportSingleton.swift; sourceTree = "<group>"; };
 		813D5CAA1D4B5CED00AD3C85 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		813D5CAE1D4B6AD700AD3C85 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		813D5CB01D4B825900AD3C85 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		813D5CB21D4B876300AD3C85 /* SchoolSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolSearchViewController.swift; sourceTree = "<group>"; };
+		813D5CB41D4B877600AD3C85 /* StorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
+		813D5CB61D4B878000AD3C85 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 				812D7EE81D49BADE00DBC8F6 /* RecentTableViewController.swift */,
 				813D5CAA1D4B5CED00AD3C85 /* MenuViewController.swift */,
 				813D5CAE1D4B6AD700AD3C85 /* DetailViewController.swift */,
+				813D5CB01D4B825900AD3C85 /* SearchViewController.swift */,
+				813D5CB21D4B876300AD3C85 /* SchoolSearchViewController.swift */,
+				813D5CB41D4B877600AD3C85 /* StorageViewController.swift */,
+				813D5CB61D4B878000AD3C85 /* SettingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -192,9 +204,13 @@
 				813D5CAB1D4B5CED00AD3C85 /* MenuViewController.swift in Sources */,
 				812D7ED51D48AE6C00DBC8F6 /* WhiteRoundButton.swift in Sources */,
 				812D7EE51D48F90D00DBC8F6 /* NotiTextField.swift in Sources */,
+				813D5CB71D4B878000AD3C85 /* SettingViewController.swift in Sources */,
 				812D7EC31D48785B00DBC8F6 /* NotiViewController.swift in Sources */,
+				813D5CB11D4B825900AD3C85 /* SearchViewController.swift in Sources */,
+				813D5CB31D4B876300AD3C85 /* SchoolSearchViewController.swift in Sources */,
 				812D7EDD1D48DBE500DBC8F6 /* PersonalViewController.swift in Sources */,
 				812D7EC11D48785B00DBC8F6 /* AppDelegate.swift in Sources */,
+				813D5CB51D4B877600AD3C85 /* StorageViewController.swift in Sources */,
 				812D7EE31D48E8FB00DBC8F6 /* MainColorRoundButton.swift in Sources */,
 				812D7EE91D49BADE00DBC8F6 /* RecentTableViewController.swift in Sources */,
 				812D7EEE1D49C27600DBC8F6 /* SupportSingleton.swift in Sources */,

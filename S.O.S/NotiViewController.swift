@@ -12,7 +12,9 @@ class NotiViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //navigation 초기화
         naviInit()
+       
         
     }
 
