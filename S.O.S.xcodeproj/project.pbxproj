@@ -19,6 +19,8 @@
 		812D7EE91D49BADE00DBC8F6 /* RecentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D7EE81D49BADE00DBC8F6 /* RecentTableViewController.swift */; };
 		812D7EEB1D49C0B600DBC8F6 /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D7EEA1D49C0B600DBC8F6 /* RecentTableViewCell.swift */; };
 		812D7EEE1D49C27600DBC8F6 /* SupportSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D7EED1D49C27600DBC8F6 /* SupportSingleton.swift */; };
+		813D5CAB1D4B5CED00AD3C85 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CAA1D4B5CED00AD3C85 /* MenuViewController.swift */; };
+		813D5CAF1D4B6AD700AD3C85 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813D5CAE1D4B6AD700AD3C85 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		812D7EE81D49BADE00DBC8F6 /* RecentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTableViewController.swift; sourceTree = "<group>"; };
 		812D7EEA1D49C0B600DBC8F6 /* RecentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTableViewCell.swift; sourceTree = "<group>"; };
 		812D7EED1D49C27600DBC8F6 /* SupportSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportSingleton.swift; sourceTree = "<group>"; };
+		813D5CAA1D4B5CED00AD3C85 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		813D5CAE1D4B6AD700AD3C85 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 				812D7EDC1D48DBE500DBC8F6 /* PersonalViewController.swift */,
 				812D7EC21D48785B00DBC8F6 /* NotiViewController.swift */,
 				812D7EE81D49BADE00DBC8F6 /* RecentTableViewController.swift */,
+				813D5CAA1D4B5CED00AD3C85 /* MenuViewController.swift */,
+				813D5CAE1D4B6AD700AD3C85 /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -181,7 +187,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813D5CAF1D4B6AD700AD3C85 /* DetailViewController.swift in Sources */,
 				812D7EEB1D49C0B600DBC8F6 /* RecentTableViewCell.swift in Sources */,
+				813D5CAB1D4B5CED00AD3C85 /* MenuViewController.swift in Sources */,
 				812D7ED51D48AE6C00DBC8F6 /* WhiteRoundButton.swift in Sources */,
 				812D7EE51D48F90D00DBC8F6 /* NotiTextField.swift in Sources */,
 				812D7EC31D48785B00DBC8F6 /* NotiViewController.swift in Sources */,
